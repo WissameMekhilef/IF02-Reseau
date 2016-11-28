@@ -1,3 +1,6 @@
+#!/usr/bin/env python 2.7
+# coding: utf-8
+
 from mttkinter import Tk, PhotoImage, Label, NSEW, Canvas
 import time
 from queue import Queue, Empty

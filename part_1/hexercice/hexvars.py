@@ -1,3 +1,6 @@
+#!/usr/bin/env python 2.7
+# coding: utf-8
+
 def __init__():
 	global taille, plateau, gs, monTour, numJoueur, uf, couleurs
 

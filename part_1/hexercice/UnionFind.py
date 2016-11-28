@@ -1,3 +1,6 @@
+#!/usr/bin/env python 2.7
+# coding: utf-8
+
 """UnionFind.py
 
 Union-find data structure. Based on Josiah Carlson's code,

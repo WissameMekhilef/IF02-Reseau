@@ -1,8 +1,9 @@
+#!/usr/bin/env python 2.7
+# coding: utf-8
 
 #-----------------------------------------------------------------------------------------
 
-#!/usr/bin/env python
-# coding: utf-8
+
 
 import random
 from sys import argv
