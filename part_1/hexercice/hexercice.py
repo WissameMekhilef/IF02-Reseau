@@ -1,4 +1,9 @@
+
 #-----------------------------------------------------------------------------------------
+
+#!/usr/bin/env python
+# coding: utf-8
+
 import random
 from sys import argv
 import math
