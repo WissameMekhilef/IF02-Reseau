@@ -1,5 +1,3 @@
-#!/usr/bin/env python 2.7
-# coding: utf-8
 
 """UnionFind.py
 
@@ -12,6 +10,8 @@ heaviest = max([(self.weights[r],r) for r in roots])[1]
 to
 heaviest = max([(self.weights[r],r) for r in roots], key=lambda x: x[0])[1]
 """
+#!/usr/bin/env python
+# coding: utf-8
 
 class UnionFind:
     """Union-find data structure.

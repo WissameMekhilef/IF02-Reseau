@@ -1,4 +1,4 @@
-#!/usr/bin/env python 2.7
+#!/usr/bin/env python
 # coding: utf-8
 
 #-----------------------------------------------------------------------------------------
@@ -150,6 +150,7 @@ def initClient(arguments):
 
 def initServeur(arguments):
 	""" initialisation du serveur """
+    
 	# To do ! Pour programmer le serveur, vous devez implémenter cette fonction
 	pass
 
