@@ -152,6 +152,8 @@ def initServeur(arguments):
 	""" initialisation du serveur """
     
 	# To do ! Pour programmer le serveur, vous devez implémenter cette fonction
+   
+    
 	pass
 
 
