@@ -116,7 +116,6 @@ def initClient(arguments):
 	
 	s.connect((arguments["ip"],arguments["port"]))
 	hv.gs = s
-	print(s)
 	
 	#bonjour extension1 extension2 ...
 	sendcmd('bonjour', ' '.join(listeExtensions))
@@ -159,8 +158,6 @@ def initServeur(arguments):
 	s.listen(1024)
 
 	(sc, addr) = s.accept()
-	##print(sc)
-	##print(addr)
 
 	#listeExtensions est une liste contenant toutes les extensions passées sur la ligne de commande
 	listeExtensions = [key for key in arguments if arguments[key]==True]
@@ -211,7 +208,6 @@ def init(arguments):
 	
 	if arguments["ip"]!=None:
 		# on est le client
-		print(arguments["ip"])
 		initClient(arguments)
 	else:
 		# on est le serveur
