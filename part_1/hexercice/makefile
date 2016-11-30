@@ -1,6 +1,6 @@
 run:
 	clear
-	python3 hexercice.py client 192.168.47.162 Alice tablier 7
+	python3 hexercice.py client 192.168.47.162 Alice tablier 3
 
 server:
 	clear

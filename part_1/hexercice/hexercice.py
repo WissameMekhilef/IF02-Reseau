@@ -42,12 +42,36 @@ class Aurevoir(Exception):
 def CoupJoueur(gui, i, j):
 	""" le joueur joue sur la cellule (i,j) """	
 	# To do ! Vous devez programmer cette fonction.
-	pass
+	if(hv.monTour):
+		if(CoupValide(i,j)):
+			JouerUnCoup(gui, i, j, hv.numJoueur)
+			hv.monTour = False
+			sendcmd("joue",PlateauToTablierCoord(i,j))
+		else:
+			print("Coup impossible, case déjà occupée")
+	else:
+		print("Wait your turn")
 
 def CoupAdversaire(gui):
 	""" traite les commandes et coups de l'adversaire """
 	# To do ! Vous devez programmer cette fonction.
-	pass
+	(cmd,co) = recvcmd("joue")
+	if(cmd == "joue"):
+		(i,j)=TablierToPlateauCoord(co)
+		if not(hv.monTour):
+			if(CoupValide(i,j)):
+				if(hv.numJoueur==1):
+					numJoueur=2
+				else:
+					numJoueur=1
+				JouerUnCoup(gui, i, j, numJoueur)
+				if(Gagnant(numJoueur)):
+					sendcmd("bravo",numJoueur)
+				hv.monTour=True
+	if(cmd == "bravo"):
+		raise Aurevoir
+	if(cmd == "aurevoir"):
+		raise Aurevoir
 
 #-----------------------------------------------------------------------------------------
 
@@ -188,10 +212,10 @@ def initServeur(arguments):
 		# To do ! Pour supporter l'extension pileouface, vous devez implémenter ce morceau de code
 		pass
 	else:
-		hv.monTour = True
-		print("--- C'est moi qui commence.")
+		hv.monTour = False
+		print("--- C'est toi qui commence.")
 
-	hv.numJoueur = 2
+	hv.numJoueur = 1
 	print("--- J'ai la couleur", hv.couleurs[hv.numJoueur])
 
 
@@ -247,7 +271,7 @@ if __name__ == '__main__':
 		exit(1)
 
 		
-	arguments = {"NomJoueur": None, "tablier": ['11'], "pileouface": False, "gateau":False, "message":False, "ip":None, "port":port}
+	arguments = {"NomJoueur": None, "tablier": ['4'], "pileouface": False, "gateau":False, "message":False, "ip":None, "port":port}
 	for (pos,param) in enumerate(argv):
 		if param in ["pileouface", "gateau", "message"]:
 			arguments[param] = True
