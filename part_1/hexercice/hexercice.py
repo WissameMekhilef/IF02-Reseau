@@ -55,7 +55,7 @@ def CoupJoueur(gui, i, j):
 def CoupAdversaire(gui):
 	""" traite les commandes et coups de l'adversaire """
 	# To do ! Vous devez programmer cette fonction.
-	(cmd,co) = recvcmd("joue")
+	(cmd,co) = recvcmd("joue","bravo","aurevoir")
 	if(cmd == "joue"):
 		(i,j)=TablierToPlateauCoord(co)
 		if not(hv.monTour):
