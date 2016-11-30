@@ -4,11 +4,11 @@ run:
 
 server:
 	clear
-	python3 hexercice.py server host
+	python3 hexercice.py server host tablier 5
 
 client:
 	clear
-	python3 hexercice.py client 127.0.0.1 client
+	python3 hexercice.py client 127.0.0.1 client tablier 5
 
 help:
 	clear
