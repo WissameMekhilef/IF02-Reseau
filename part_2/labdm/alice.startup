@@ -1,1 +1,3 @@
 ### TODO : configurer l'adresse IP, la passerelle et l'adresse du serveur DNS
+ifconfig eth0 172.24.204.1
+
