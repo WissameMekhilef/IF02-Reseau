@@ -116,6 +116,7 @@ def initClient(arguments):
 	
 	s.connect((arguments["ip"],arguments["port"]))
 	hv.gs = s
+	print(s)
 	
 	#bonjour extension1 extension2 ...
 	sendcmd('bonjour', ' '.join(listeExtensions))
@@ -150,17 +151,51 @@ def initClient(arguments):
 
 def initServeur(arguments):
 	""" initialisation du serveur """
-    
+
 	# programmation réseaux du socket
 	s=socket()
 	s.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 	s.bind(('0.0.0.0',6666))
-	s.listen(1)
+	s.listen(1024)
 
-	connexion, info = s.accept()
+	(sc, addr) = s.accept()
+	##print(sc)
+	##print(addr)
 
-	(commande, nom) = recvcmd("bonjour","aurevoir")
-	sendcmd("bonjour : ", nom)
+	#listeExtensions est une liste contenant toutes les extensions passées sur la ligne de commande
+	listeExtensions = [key for key in arguments if arguments[key]==True]
+	
+	hv.gs = sc
+	
+	#bonjour extension1 extension2 ...
+	sendcmd('bonjour',listeExtensions)
+	(cmd,args)=recvcmd('bonjour')
+	extensionsSupportees = []
+	if len(args)>0 :
+		extensionsSupportees = [param for param in args.split(' ') if arguments[param]]
+	print("--- Extensions supportées par les deux joueurs :", extensionsSupportees)
+	
+	#joueur NomJoueur
+	sendcmd('joueur', arguments["NomJoueur"])
+	(cmd,args)=recvcmd('joueur')
+	NomAutreJoueur = args
+	print("--- L'autre joueur s'appelle %s." % NomAutreJoueur)
+	
+	#tablier taille1 taille2 ...
+	sendcmd('tablier', ' '.join(arguments["tablier"]))
+	(cmd,args) = recvcmd('tablier')
+	hv.taille = int(args)
+	print("--- Le serveur a choisi un tablier de taille %s" % hv.taille)
+
+	if "pileouface" in extensionsSupportees:
+		# To do ! Pour supporter l'extension pileouface, vous devez implémenter ce morceau de code
+		pass
+	else:
+		hv.monTour = True
+		print("--- C'est moi qui commence.")
+
+	hv.numJoueur = 2
+	print("--- J'ai la couleur", hv.couleurs[hv.numJoueur])
 
 
 def init(arguments):	
@@ -176,6 +211,7 @@ def init(arguments):
 	
 	if arguments["ip"]!=None:
 		# on est le client
+		print(arguments["ip"])
 		initClient(arguments)
 	else:
 		# on est le serveur

@@ -9,3 +9,7 @@ server:
 client:
 	clear
 	python3 hexercice.py client 127.0.0.1 client
+
+help:
+	clear
+	python3 hexercice.py
