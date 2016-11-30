@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 def __init__():
 	global taille, plateau, gs, monTour, numJoueur, uf, couleurs

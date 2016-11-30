@@ -55,8 +55,7 @@ created.
 Author: Allen B. Taylor, a.b.taylor@gmail.com
 '''
 #!/usr/bin/env python
-# coding: utf-8
-
+# -*- coding: utf-8 -*-
 from tkinter import *
 import threading
 import queue

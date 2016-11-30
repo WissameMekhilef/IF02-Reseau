@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 #-----------------------------------------------------------------------------------------
 
@@ -40,7 +40,8 @@ class Aurevoir(Exception):
 
 #-----------------------------------------------------------------------------------------
 def CoupJoueur(gui, i, j):
-	""" le joueur joue sur la cellule (i,j) """	
+	""" le joueur joue sur la cellule (i,j) """
+    
 	# To do ! Vous devez programmer cette fonction.
 	if(hv.monTour):
 		if(CoupValide(i,j)):
@@ -262,6 +263,7 @@ if __name__ == '__main__':
 	#hex [client IP|server] NomJoueur [tablier taille1 ... taillek] [option1] [...] [optionk]
 	#hex client 127.0.0.1 Alice pileouface
 	#hex.py server Alice pileouface gateau tablier 5 11
+    
 	port = 6666
 
 	if len(argv)<3 or argv[1] not in ['client','server']:
