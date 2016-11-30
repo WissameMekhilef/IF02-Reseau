@@ -151,10 +151,16 @@ def initClient(arguments):
 def initServeur(arguments):
 	""" initialisation du serveur """
     
-	# To do ! Pour programmer le serveur, vous devez implémenter cette fonction
-   
-    
-	pass
+	# programmation réseaux du socket
+	s=socket()
+	s.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
+	s.bind(('0.0.0.0',6666))
+	s.listen(1)
+
+	connexion, info = s.accept()
+
+	(commande, nom) = recvcmd("bonjour","aurevoir")
+	sendcmd("bonjour : ", nom)
 
 
 def init(arguments):	
