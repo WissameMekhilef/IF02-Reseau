@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 #-----------------------------------------------------------------------------------------
 
@@ -11,6 +11,10 @@ import math
 from hexgui import GUI
 from UnionFind import UnionFind
 from time import sleep
+
+from uuid import uuid4
+from hashlib import sha256
+from random import randint
 
 from queue import Queue
 
@@ -40,7 +44,8 @@ class Aurevoir(Exception):
 
 #-----------------------------------------------------------------------------------------
 def CoupJoueur(gui, i, j):
-	""" le joueur joue sur la cellule (i,j) """	
+	""" le joueur joue sur la cellule (i,j) """
+    
 	# To do ! Vous devez programmer cette fonction.
 	if(hv.monTour):
 		if(CoupValide(i,j)):
@@ -162,8 +167,21 @@ def initClient(arguments):
 	print("--- Le serveur a choisi un tablier de taille %s" % hv.taille)
 
 	if "pileouface" in extensionsSupportees:
-		# To do ! Pour supporter l'extension pileouface, vous devez implémenter ce morceau de code
-		pass
+		x = str(uuid4())
+		p = randint(0,1)
+		sendcmd("pileouface", x)
+		(cmd,args)=recvcmd('pileouface')
+		if(cmd == "pileouface"):
+			sendcmd("pileouface", p)
+			(cmd,args)=recvcmd('pileouface')
+			if(cmd == "pileouface"):
+				y = args
+				if(sha256(' '.join([x,y,t]).encode('utf8')).hexdigest() == sha256(' '.join([x,y,p]).encode('utf8')).hexdigest()):
+					hv.monTour = True
+					print("--- C'est moi qui commence.")
+				else:
+					hv.monTour = False
+					print("--- C'est toi qui commence.")
 	else:
 		hv.monTour = True
 		print("--- C'est moi qui commence.")
@@ -209,8 +227,23 @@ def initServeur(arguments):
 	print("--- Le serveur a choisi un tablier de taille %s" % hv.taille)
 
 	if "pileouface" in extensionsSupportees:
-		# To do ! Pour supporter l'extension pileouface, vous devez implémenter ce morceau de code
-		pass
+		(cmd,args)=recvcmd('pileouface')
+		if(cmd == "pileouface"):
+			y = str(uuid4())
+			t = randint(0,1)
+			x = args
+			sendcmd("pileouface",sha256(' '.join([x,y,t]).encode('utf8')).hexdigest())
+			(cmd,args)=recvcmd('pileouface')
+			if(cmd == "pileouface"):
+				p = args
+				sendcmd("pileouface",y)
+				if(t != p):
+					hv.monTour = True
+					print("--- C'est moi qui commence.")
+				else:
+					hv.monTour = False
+					print("--- C'est toi qui commence.")
+
 	else:
 		hv.monTour = False
 		print("--- C'est toi qui commence.")
@@ -262,6 +295,7 @@ if __name__ == '__main__':
 	#hex [client IP|server] NomJoueur [tablier taille1 ... taillek] [option1] [...] [optionk]
 	#hex client 127.0.0.1 Alice pileouface
 	#hex.py server Alice pileouface gateau tablier 5 11
+    
 	port = 6666
 
 	if len(argv)<3 or argv[1] not in ['client','server']:
