@@ -1,3 +1,8 @@
 ### TODO : configurer l'adresse IP, la passerelle et l'adresse du serveur DNS
-ifconfig eth0 172.24.204.1
+ifconfig eth0 down
+ifconfig eth0 172.24.207.1 netmask 255.255.252.0 up
 
+
+route add default gw 172.24.207.254 
+
+echo "nameserver 172.24.207.2" > /etc/resolv.conf 

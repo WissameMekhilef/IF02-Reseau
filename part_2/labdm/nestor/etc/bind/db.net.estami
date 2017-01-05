@@ -7,6 +7,13 @@ $TTL	60000
 			60000 ; negative cache ttl
 			)
 @		IN	NS	nestor.estami.net.
+@		IN MX 5 smtp.estami.net.
 
 ; TODO : adresse IP de nestor et des alias smtp, pop et imap
+	estami.net.  IN A 172.24.207.2
+	smtp         IN A 172.24.207.2 
+	pop          IN A 172.24.207.2 
+	imap         IN A 172.24.207.2 
+
 ; TODO : configuration du serveur SMTP entrant
+
