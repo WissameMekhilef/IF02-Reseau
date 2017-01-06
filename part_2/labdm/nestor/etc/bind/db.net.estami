@@ -8,8 +8,9 @@ $TTL	60000
 			)
 @		IN	NS	nestor.estami.net.
 @		IN MX 5 smtp.estami.net.
-
+@       	IN MX 5 pop.estami.net.
 ; TODO : adresse IP de nestor et des alias smtp, pop et imap
+	nestor IN A 172.24.207.2
 	estami.net.  IN A 172.24.207.2
 	smtp         IN A 172.24.207.2 
 	pop          IN A 172.24.207.2 
