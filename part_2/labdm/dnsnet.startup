@@ -4,6 +4,6 @@ ifconfig eth1 54.16.64.54/16
 ###
 ### TODO: Remplacer 127.0.0.1 par l'adresse IP de nestor.estami.net
 ###
-echo "nestor.estami	IN	A	172.24.207.2" >> /etc/bind/db.net
+echo "nestor.estami	IN	A	172.24.207.1" >> /etc/bind/db.net
 /etc/init.d/bind start
 /etc/init.d/quagga start

@@ -1,6 +1,5 @@
 wissame.mekhilef                           42.69.182.130/8        172.20.0.0/14
 
-
 vincent.renard                            42.161.127.157/8      172.24.204.0/22
 #Plage d'adresses 
 ##ipaddr 42.161.127.157 8
@@ -21,10 +20,18 @@ Depuis :     172.24.204.1 i.e. 10101100000110001100110000000001
 Jusque :   172.24.207.254 i.e. 10101100000110001100111111111110
 
 Alice ------EVE------NESTOR------
-Alice  172.24.204.1
-EVE eth0 172.24.207.254 eth1 42.255.255.254
+
+
+Alice :
+Eth0 172.24.204.1/22
+EVE eth0 172.24.207.254/22 eth1 42.255.255.254/8
 
 linfo -m /tmp/topo.ps
 xdg-open /tmp/topo.ps
 
 nestor.estami.net = . . . 
+
+
+
+Bob : 
+Eth0 10.66.66.66/8

@@ -1,10 +1,8 @@
 #### TODO : configurer les deux interfaces réseau
-ifconfig eth0 down
-ifconfig eth1 down
-ifconfig eth0 172.24.207.254 netmask 255.255.252.0 up 
-ifconfig eth1 42.255.255.254 netmask 255.0.0.0 up
+ifconfig eth0 172.24.207.254/22
+ifconfig eth1 42.161.127.157/8 
 
 echo 1 > /proc/6/net/ipv4/ip_forward 
 
-###
+
 /etc/init.d/quagga start

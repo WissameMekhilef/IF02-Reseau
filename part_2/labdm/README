@@ -33,9 +33,9 @@ Dans un premier temps, il s'agit de terminer de configurer le lab
 en modifiant les fichiers suivants conformément aux indications TODO
 qui y figurent :
   - alice.startup
-  - eve.startup
+  - eve.startup-
   - dnsnet.startup
-  - nestor.startup
+  - nestor.startup —
   - nestor/etc/bind/db.net.estami
 
 Rq. il n'y a que des lignes à ajouter, aucune ligne existante n'est
@@ -85,3 +85,18 @@ la manière suivante :
      cette commande doit afficher un résumé des échanges ARP, DNS, 
      et SMTP.
 
+
+
+Je t'adore à l'égal de la voûte nocturne, 
+Ô vase de tristesse, ô grande taciturne,
+Et t'aime d'autant plus, belle, que tu me fuis, 
+Et que tu me parais, ornement de mes nuits, 
+Plus ironiquement accumuler les lieues 
+Qui séparent mes bras des immensités bleues.
+
+Je m'avance à l'attaque, et je grimpe aux assauts, 
+Comme après un cadavre un choeur de vermisseaux, 
+Et je chéris, ô bête implacable et cruelle ! 
+Jusqu'à cette froideur par où tu m'es plus belle !
+
+ 
