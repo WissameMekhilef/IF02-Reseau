@@ -1,6 +1,6 @@
 ### TODO : configurer l'adresse IP et la passerelle
-ifconfig eth0 172.24.207.1/22
 
+ifconfig eth0 172.24.204.2/22
 route add default gw 172.24.207.254 dev eth0
 
 chown alice:alice /home/alice
