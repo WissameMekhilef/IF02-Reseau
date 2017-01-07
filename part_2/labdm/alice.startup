@@ -2,3 +2,4 @@
 ifconfig eth0 172.24.204.1/22
 route add default gw 172.24.207.254 dev eth0
 echo "nameserver 172.24.207.1" > /etc/resolv.conf 
+/etc/init.d/quagga start
