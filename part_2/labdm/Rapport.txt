@@ -16,11 +16,20 @@ Alice ------EVE------NESTOR------
 
 
 Alice :
-Eth0 172.24.204.1/22
+eth0 172.24.204.1/22
 
-EVE eth0 172.24.207.254/22 eth1 42.255.255.254/8
+Une route par defaut est ajoutée vers la derniere addresse du bloc 172.24.204.0/22
 
-Nestor : Eth0 172.24.207.2/8
+
+
+EVE :
+eth0 172.24.207.254/22 
+eth1 42.161.167.157/8
+
+Nestor : 
+eth0 172.24.207.1/22
+
+
 
 
 
